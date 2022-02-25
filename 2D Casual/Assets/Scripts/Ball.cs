@@ -1,0 +1,98 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ball : MonoBehaviour
+{
+	public Rigidbody2D rb;
+	public Rigidbody2D Hook;
+
+	public float releaseTime = .15f;
+	public float maxDragDistance = 2f;
+
+	public GameObject NextBall;
+
+	private bool isPressed = false;
+
+	public LineRenderer catapultLineFront;
+	public LineRenderer catapultLineBack;
+
+	private Ray leftCatapultToProjectile;
+	//private float circleRadius;
+
+
+	// Start is called before the first frame update
+	void Start()
+	{
+		LineRendererSetup();
+		//circleRadius = 0.3f;
+		leftCatapultToProjectile = new Ray(catapultLineFront.transform.position, Vector3.zero);
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		if (isPressed)
+		{
+			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			if (Vector3.Distance(mousePos, Hook.position) > maxDragDistance)
+				rb.position = Hook.position + (mousePos - Hook.position).normalized * maxDragDistance;
+			else
+				rb.position = mousePos;
+		}
+
+		LineRendererUpdate();
+	}
+
+	void LineRendererSetup()
+	{
+		catapultLineFront.SetPosition(0, catapultLineFront.transform.position);
+		catapultLineBack.SetPosition(0, catapultLineBack.transform.position);
+
+		catapultLineFront.sortingLayerName = "Foreground";
+		catapultLineBack.sortingLayerName = "Foreground";
+
+		catapultLineFront.sortingOrder = 3;
+		catapultLineBack.sortingOrder = 1;
+	}
+
+	void LineRendererUpdate()
+	{
+		Vector2 catapultToProjectile = transform.position - catapultLineFront.transform.position;
+		leftCatapultToProjectile.direction = catapultToProjectile;
+		Vector3 holdPoint = leftCatapultToProjectile.GetPoint(catapultToProjectile.magnitude /*+ circleRadius */);
+		catapultLineFront.SetPosition(1, holdPoint);
+		catapultLineBack.SetPosition(1, holdPoint);
+	}
+
+	void OnMouseDown()
+	{
+		isPressed = true;
+		rb.isKinematic = true;
+	}
+
+	void OnMouseUp()
+	{
+		isPressed = false;
+		rb.isKinematic = false;
+
+		StartCoroutine(Release());
+	}
+
+	IEnumerator Release()
+	{
+		yield return new WaitForSeconds(releaseTime);
+		GetComponent<SpringJoint2D>().enabled = false;
+		this.enabled = false;
+		yield return new WaitForSeconds(0.1f);
+		Band.BandVisible = 1;
+
+
+		yield return new WaitForSeconds(2f);
+		if (NextBall != null)
+		{
+			NextBall.SetActive(true);
+			Band.BandVisible = 0;
+		}
+	}
+}
