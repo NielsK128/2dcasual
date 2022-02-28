@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    public GameObject ballprefab;
+    public GameObject ballPrefab;
 
     void Start()
     {
         
     }
 
-    public void Spawn() {
-        Instantiate(ballprefab, new Vector3(0, -2, 0), Quaternion.identity);
+    public void SpawnBall() {
+        Instantiate(ballPrefab, new Vector3(0, -2, 0), Quaternion.identity);
     }
 
 }

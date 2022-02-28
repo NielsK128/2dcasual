@@ -91,8 +91,8 @@ public class Ball : MonoBehaviour
 		Band.BandVisible = 1;
 
 
-		yield return new WaitForSeconds(2f);
-	    ballSpawner.GetComponent<BallSpawner>().Spawn();
+		yield return new WaitForSeconds(.5f);
+	    ballSpawner.GetComponent<BallSpawner>().SpawnBall();
 		yield return new WaitForSeconds(2f);
 		Destroy(this.gameObject);
 	}
