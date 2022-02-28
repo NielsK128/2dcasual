@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 60
+  controlID: 64
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 0.6281571, y: -2.0217004, z: 0.06272129}
     speed: 2
-    m_Value: {x: 0.6822699, y: -2.0232918, z: 0.06135254}
+    m_Value: {x: 0.6281571, y: -2.0217004, z: 0.06272129}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 2.9047606
     speed: 2
-    m_Value: 3.041634
+    m_Value: 2.9047606
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -835,14 +835,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: E:\2D Casual
+  m_LastProjectPath: E:\2dcasual\2D Casual
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 34520000
-    m_LastClickedID: 21044
-    m_ExpandedIDs: 000000002c5200002e5200003452000000ca9a3bffffff7f
+    m_SelectedIDs: 30520000
+    m_LastClickedID: 21040
+    m_ExpandedIDs: 000000002c5200002e5200003052000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -870,7 +870,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002c5200002e520000
+    m_ExpandedIDs: 000000002c5200002e52000030520000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -10,8 +10,7 @@ public class Ball : MonoBehaviour
 	public float releaseTime = .15f;
 	public float maxDragDistance = 2f;
 
-	public GameObject NextBall;
-
+	public GameObject ballSpawner;
 	private bool isPressed = false;
 
 	public LineRenderer catapultLineFront;
@@ -24,6 +23,10 @@ public class Ball : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		catapultLineFront = GameObject.FindWithTag("FrontPoint").GetComponent<LineRenderer>();
+		catapultLineBack = GameObject.FindWithTag("BackPoint").GetComponent<LineRenderer>();
+		ballSpawner = GameObject.FindWithTag("Mechanics");
+		Hook = GameObject.FindWithTag("Hook").GetComponent<Rigidbody2D>();
 		LineRendererSetup();
 		//circleRadius = 0.3f;
 		leftCatapultToProjectile = new Ray(catapultLineFront.transform.position, Vector3.zero);
@@ -89,10 +92,8 @@ public class Ball : MonoBehaviour
 
 
 		yield return new WaitForSeconds(2f);
-		if (NextBall != null)
-		{
-			NextBall.SetActive(true);
-			Band.BandVisible = 0;
-		}
+	    ballSpawner.GetComponent<BallSpawner>().Spawn();
+		yield return new WaitForSeconds(2f);
+		Destroy(this.gameObject);
 	}
 }
