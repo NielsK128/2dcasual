@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public Vector2 movement;
     public Rigidbody2D rb;
     public GameObject explosionParticles;
+    public GameObject explosionSound;
     public GameObject mechanics;
     void Start() {
         mechanics = GameObject.FindWithTag("Mechanics");
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         else {
         GameObject.FindWithTag("Mechanics").GetComponent<GameOver>().endGame(); }
         Instantiate(explosionParticles, this.gameObject.transform.position, Quaternion.identity );
+        Instantiate(explosionSound, this.gameObject.transform.position, Quaternion.identity );
         Destroy(this.gameObject);
     }
 }

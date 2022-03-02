@@ -126,6 +126,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   explosionParticles: {fileID: 5182826586777111071, guid: fca404633192a6e4fb1fb4e0a2fbb65b,
     type: 3}
+  explosionSound: {fileID: 3240391218274440560, guid: 8bee75e37ffb3f74a9efa166dd19d2d3,
+    type: 3}
   mechanics: {fileID: 0}
 --- !u!60 &5450851553021970020
 PolygonCollider2D:

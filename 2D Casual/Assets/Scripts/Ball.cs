@@ -13,6 +13,9 @@ public class Ball : MonoBehaviour
 	public GameObject ballSpawner;
 	private bool isPressed = false;
 
+    public GameObject explosionParticles;
+    public GameObject explosionSound;
+
 	public LineRenderer catapultLineFront;
 	public LineRenderer catapultLineBack;
 
@@ -30,6 +33,7 @@ public class Ball : MonoBehaviour
 		LineRendererSetup();
 		//circleRadius = 0.3f;
 		leftCatapultToProjectile = new Ray(catapultLineFront.transform.position, Vector3.zero);
+		this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = true;
 	}
 
 	// Update is called once per frame
@@ -85,15 +89,18 @@ public class Ball : MonoBehaviour
 	IEnumerator Release()
 	{
 		yield return new WaitForSeconds(releaseTime);
+		this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
 		GetComponent<SpringJoint2D>().enabled = false;
 		this.enabled = false;
-		yield return new WaitForSeconds(0.1f);
-		Band.BandVisible = 1;
+		//yield return new WaitForSeconds(0.1f);
+		//Band.BandVisible = 1;
 
 
 		yield return new WaitForSeconds(.5f);
 	    ballSpawner.GetComponent<BallSpawner>().SpawnBall();
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(1.5f);
+		Instantiate(explosionParticles, this.gameObject.transform.position, Quaternion.identity );
+        Instantiate(explosionSound, this.gameObject.transform.position, Quaternion.identity );
 		Destroy(this.gameObject);
 	}
 }

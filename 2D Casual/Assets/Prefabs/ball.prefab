@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 517702323
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bd28434add772854098fdc22fef985cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,6 +146,10 @@ MonoBehaviour:
   releaseTime: 0.15
   maxDragDistance: 2
   ballSpawner: {fileID: 0}
+  explosionParticles: {fileID: 5182826586777111071, guid: fca404633192a6e4fb1fb4e0a2fbb65b,
+    type: 3}
+  explosionSound: {fileID: 3240391218274440560, guid: 8bee75e37ffb3f74a9efa166dd19d2d3,
+    type: 3}
   catapultLineFront: {fileID: 0}
   catapultLineBack: {fileID: 0}
 --- !u!60 &2150364788145113022

@@ -11,6 +11,7 @@ TagManager:
   - BackPoint
   - Enemy
   - Floor
+  - SoundToggle
   layers:
   - Default
   - TransparentFX
