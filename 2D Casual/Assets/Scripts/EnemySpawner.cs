@@ -10,8 +10,8 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemy());    }
 
     IEnumerator SpawnEnemy() {
-    yield return new WaitForSeconds(3f);
-    Instantiate(enemyPrefab, new Vector3(Random.Range(-2, 2), 6, 0), Quaternion.identity);
+    yield return new WaitForSeconds(2f);
+    Instantiate(enemyPrefab, new Vector3(Random.Range((float)-2.5, (float)2.5), 6, 0), Quaternion.identity);
     StartCoroutine(SpawnEnemy());
     }
 }

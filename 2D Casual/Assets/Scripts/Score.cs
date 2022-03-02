@@ -9,10 +9,14 @@ public class Score : MonoBehaviour
     public TMP_Text scoreText;
 
     void Update() {
-        scoreText.text = "Score: " + score; 
+        scoreText.text = score.ToString(); 
     }
 
     public void increaseScore(int scoreIncrease) {
         score += scoreIncrease;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

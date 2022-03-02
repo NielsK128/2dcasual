@@ -10,6 +10,7 @@ TagManager:
   - FrontPoint
   - BackPoint
   - Enemy
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -44,8 +45,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3918758443
+    locked: 0
+  - name: Catapult
+    uniqueID: 534595789
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3524458083
+    locked: 0
+  - name: Rocket
+    uniqueID: 2423600907
     locked: 0
   - name: Ball
     uniqueID: 517702323
