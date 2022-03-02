@@ -11,8 +11,6 @@ public class GameOver : MonoBehaviour
         gameOverPanel.SetActive(true);
         ingameUI.SetActive(false);
         Time.timeScale = 0;
-        this.gameObject.GetComponent<MuteManager>().changeButtons();
-
     }
 
 

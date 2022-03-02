@@ -20,6 +20,8 @@ public class Ball : MonoBehaviour
 	public LineRenderer catapultLineBack;
 
 	private Ray leftCatapultToProjectile;
+
+	bool ballReleased = false;
 	//private float circleRadius;
 
 
@@ -74,20 +76,25 @@ public class Ball : MonoBehaviour
 
 	void OnMouseDown()
 	{
+		if(ballReleased == false) {
 		isPressed = true;
 		rb.isKinematic = true;
+		}
 	}
 
 	void OnMouseUp()
 	{
+		if(ballReleased == false) {
 		isPressed = false;
 		rb.isKinematic = false;
 
 		StartCoroutine(Release());
+		}
 	}
 
 	IEnumerator Release()
 	{
+		ballReleased = true;
 		yield return new WaitForSeconds(releaseTime);
 		this.gameObject.GetComponent<PolygonCollider2D>().isTrigger = false;
 		GetComponent<SpringJoint2D>().enabled = false;
@@ -98,6 +105,7 @@ public class Ball : MonoBehaviour
 
 		yield return new WaitForSeconds(.5f);
 	    ballSpawner.GetComponent<BallSpawner>().SpawnBall();
+		ballReleased = false;
 		yield return new WaitForSeconds(1.5f);
 		Instantiate(explosionParticles, this.gameObject.transform.position, Quaternion.identity );
         Instantiate(explosionSound, this.gameObject.transform.position, Quaternion.identity );

@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class MuteManager : MonoBehaviour
 {
-    private bool isMuted;
+    public bool isMuted;
 
     public Sprite enableSound;
     public Sprite disableSound;
 
-    void Start() {
+    public void Start() {
         isMuted = intToBool(PlayerPrefs.GetInt("muted"));
+        changeButtons();
         if(isMuted == true) {
             AudioListener.pause = true;
         }
@@ -29,10 +30,14 @@ public class MuteManager : MonoBehaviour
 
     public void changeButtons() {
                 if(isMuted == false) {
-            GameObject.FindWithTag("SoundToggle").GetComponent<Image>().sprite = disableSound;
+            this.gameObject.GetComponent<Image>().sprite = disableSound;
         } else {
-            GameObject.FindWithTag("SoundToggle").GetComponent<Image>().sprite = enableSound;
+            this.gameObject.GetComponent<Image>().sprite = enableSound;
         }
+    }
+
+    public bool getIsMuted() {
+        return isMuted;
     }
     int boolToInt(bool val)
 {
