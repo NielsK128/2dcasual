@@ -85,10 +85,9 @@ public class Ball : MonoBehaviour
 	void OnMouseUp()
 	{
 		if(ballReleased == false) {
+		StartCoroutine(Release());
 		isPressed = false;
 		rb.isKinematic = false;
-
-		StartCoroutine(Release());
 		}
 	}
 
